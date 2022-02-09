@@ -1,39 +1,37 @@
-# motion-hooks
+# motion-signals
 
 A React Hooks wrapper over [Motion One](https://motion.dev/), An animation library, built on the Web Animations API for the smallest filesize and the fastest performance.
 
-[![npm version](https://badge.fury.io/js/motion-hooks.svg)](https://www.npmjs.com/package/motion-hooks) ![npm](https://img.shields.io/npm/dt/motion-hooks) [![Twitter Follow](https://img.shields.io/twitter/follow/Sarve___tanvesh?label=Chat)](https://twitter.com/Sarve___tanvesh)
+[![npm version](https://badge.fury.io/js/motion-signals.svg)](https://www.npmjs.com/package/motion-signals) ![npm](https://img.shields.io/npm/dt/motion-signals) [![Twitter Follow](https://img.shields.io/twitter/follow/Sarve___tanvesh?label=Chat)](https://twitter.com/Sarve___tanvesh)
 
 ## Installation
 
 ```
-npm install motion-hooks motion
+npm install motion-signals motion
 ```
-
-> Your project needs to have react@16.8.0 react-dom@16.8.0 or greater
 
 ## Hooks
 
-As of now, motion-hooks has 2 hooks that wrap around `animate` and `timeline` of motion one respectively
+As of now, motion-signals has 2 hooks that wrap around `animate` and `timeline` of motion one respectively
 
--   [`useMotionAnimate`](https://github.com/tanvesh01/motion-hooks#usemotionanimate)
--   [`useMotionTimeline`](https://github.com/tanvesh01/motion-hooks#usemotiontimeline)
+-   [`useMotionAnimate`](https://github.com/tanvesh01/motion-signals#usemotionanimate)
+-   [`useMotionTimeline`](https://github.com/tanvesh01/motion-signals#usemotiontimeline)
 
 ## Example usage
 
-**Things You could do with [`useMotionAnimate`](https://github.com/tanvesh01/motion-hooks#usemotionanimate)**
+**Things You could do with [`useMotionAnimate`](https://github.com/tanvesh01/motion-signals#usemotionanimate)**
 
-Animating List - [Link to codesandbox](https://codesandbox.io/s/divine-mountain-qelct?file=/src/App.js)
+<!-- Animating List - [Link to codesandbox](https://codesandbox.io/s/divine-mountain-qelct?file=/src/App.js) -->
 
 ![useMotionAnimate List Example](https://media1.giphy.com/media/JNMxjkEipIurs5RaQb/giphy.gif)
 
-Animating Counter - [Link to codesandbox](https://codesandbox.io/s/nice-browser-d4ds3?file=/src/App.js)
+<!-- Animating Counter - [Link to codesandbox](https://codesandbox.io/s/nice-browser-d4ds3?file=/src/App.js) -->
 
 ![useMotionAnimate Counter Example](https://media3.giphy.com/media/80wDwOyRlnS1woHcF0/giphy.gif)
 
-**Things You could do with [`useMotionTimeline`](https://github.com/tanvesh01/motion-hooks#usemotiontimeline)**
+**Things You could do with [`useMotionTimeline`](https://github.com/tanvesh01/motion-signals#usemotiontimeline)**
 
-Animating elements independently - [Link to codesandbox](https://codesandbox.io/s/dazzling-dawn-f48sm?file=/src/App.js)
+<!-- Animating elements independently - [Link to codesandbox](https://codesandbox.io/s/dazzling-dawn-f48sm?file=/src/App.js) -->
 
 ![useMotionTimeline Example Usage](https://media1.giphy.com/media/RxCRUxJgi4nuM7b7yv/giphy.gif)
 
@@ -43,7 +41,7 @@ Returns all the properties returned by [`animate`](https://motion.dev/dom/animat
 
 > Props returned my [`animate`](https://motion.dev/dom/animate) are `null` initially
 
-You may view this example [here on codesandbox](https://codesandbox.io/s/divine-mountain-qelct?file=/src/App.js).
+<!-- You may view this example [here on codesandbox](https://codesandbox.io/s/divine-mountain-qelct?file=/src/App.js). -->
 
 ```jsx
 function App() {
@@ -82,9 +80,9 @@ function App() {
 Instead of passing strings to select elements, you can also pass a `ref` :point_down:
 
 ```jsx
-const boxRef = useRef(null);
+let boxRef;
 const { play, isFinished, replay } = useMotionAnimate(
-    boxRef,
+    () => boxRef, // Pass Function that returns the ref
     { y: -20, scale: 1.2 },
     { duration: 1 },
 );
@@ -142,17 +140,17 @@ Create complex sequences of animations across multiple elements.
 
 returns `timelineInstance` (Animation Controls) that are returned by [`timeline`](https://motion.dev/dom/timeline) and some helper functions and state
 
-> Props returned my [`timeline`](https://motion.dev/dom/timeline) are `null` initially
+> Props returned by [`timeline`](https://motion.dev/dom/timeline) are `null` initially
 
-You may view this example [here on codesandbox](https://codesandbox.io/s/dazzling-dawn-f48sm?file=/src/App.js).
+<!-- You may view this example [here on codesandbox](https://codesandbox.io/s/dazzling-dawn-f48sm?file=/src/App.js). -->
 
 ```jsx
 function App() {
-    const gifRef = useRef(null);
+    let gifRef;
     const { play, isFinished, replay } = useMotionTimeline(
         [
             // You can use Refs too!
-            [gifRef, { scale: [0, 1.2], opacity: 1 }],
+            [() => gifRef, { scale: [0, 1.2], opacity: 1 }],
             ['.heading', { y: [50, 0], opacity: [0, 1] }],
             ['.container p', { opacity: 1 }],
         ],
@@ -214,18 +212,18 @@ const { play, replay, reset, isFinished, timelineInstance } = useMotionTimeline(
 
 ## Local Installation & Contributing
 
--   Fork [motion-hooks](https://github.com/tanvesh01/motion-hooks)
+-   Fork [motion-signals](https://github.com/tanvesh01/motion-signals)
 
 ```sh
-git clone https://github.com/:github-username/motion-hooks.git
-cd motion-hooks
-npm install # Installs dependencies for motion-hooks
+git clone https://github.com/:github-username/motion-signals.git
+cd motion-signals
+npm install # Installs dependencies for motion-signals
 cd examples # React app to test out changes
 npm install # Installs dependencies for example app
 npm run dev # To run example on localhost:3000
 ```
 
-The contributing guidelines along with local setup guide is mentioned in [CONTRIBUTING.md](https://github.com/tanvesh01/motion-hooks/blob/main/CONTRIBUTING.md)
+The contributing guidelines along with local setup guide is mentioned in [CONTRIBUTING.md](https://github.com/tanvesh01/motion-signals/blob/main/CONTRIBUTING.md)
 
 Any Type of feedback is more than welcome! This project is in very early stage and would love to have contributors of any skill/exp level.
 
