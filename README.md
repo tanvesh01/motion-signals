@@ -1,6 +1,6 @@
 # motion-signals
 
-A React Hooks wrapper over [Motion One](https://motion.dev/), An animation library, built on the Web Animations API for the smallest filesize and the fastest performance.
+A wrapper over [Motion One](https://motion.dev/), An animation library, built on the Web Animations API for the smallest filesize and the fastest performance. Works with [solid-js](https://www.solidjs.com/)
 
 [![npm version](https://badge.fury.io/js/motion-signals.svg)](https://www.npmjs.com/package/motion-signals) ![npm](https://img.shields.io/npm/dt/motion-signals) [![Twitter Follow](https://img.shields.io/twitter/follow/Sarve___tanvesh?label=Chat)](https://twitter.com/Sarve___tanvesh)
 
@@ -10,9 +10,9 @@ A React Hooks wrapper over [Motion One](https://motion.dev/), An animation libra
 npm install motion-signals motion
 ```
 
-## Hooks
+## Functions
 
-As of now, motion-signals has 2 hooks that wrap around `animate` and `timeline` of motion one respectively
+As of now, motion-signals has 2 Functions that wrap around `animate` and `timeline` of motion one respectively
 
 -   [`useMotionAnimate`](https://github.com/tanvesh01/motion-signals#usemotionanimate)
 -   [`useMotionTimeline`](https://github.com/tanvesh01/motion-signals#usemotiontimeline)
@@ -62,15 +62,15 @@ function App() {
 
     return (
         // Replay the animation anytime by calling a function, anywhere
-        <div className="App">
+        <div class="App">
             <button disabled={!isFinished} onClick={() => replay()}>
                 Replay
             </button>
 
-            <ul className="list">
-                <li className="listItem">Item 1</li>
-                <li className="listItem">Item 2</li>
-                <li className="listItem">Item 3</li>
+            <ul class="list">
+                <li class="listItem">Item 1</li>
+                <li class="listItem">Item 2</li>
+                <li class="listItem">Item 3</li>
             </ul>
         </div>
     );
@@ -162,20 +162,15 @@ function App() {
     }, []);
 
     return (
-        <div className="App">
+        <div class="App">
             <button disabled={!isFinished} onClick={() => replay()}>
                 Replay
             </button>
 
-            <div className="container">
-                <img
-                    ref={gifRef}
-                    className="gif"
-                    src={Image}
-                    alt="mind explosion gif"
-                />
+            <div class="container">
+                <img ref={gifRef} class="gif" src={Image} alt="mind explosion gif" />
                 <div>
-                    <h1 className="heading">Tanvesh</h1>
+                    <h1 class="heading">Tanvesh</h1>
                     <p>@sarve__tanvesh</p>
                 </div>
             </div>
