@@ -6,28 +6,36 @@ import {
 import { animate } from 'motion';
 import { AnimationControls } from '@motionone/types';
 
-import { createSignal } from 'solid-js';
+import { Accessor, createSignal } from 'solid-js';
 
-type ModifiedAcceptedElements = AcceptedElements | (() => HTMLElement);
+export type ModifiedAcceptedElements = AcceptedElements | (() => HTMLElement);
 
-interface MotionAnimateEvents {
+export interface CreateAnimationEvents {
     onFinish: (res: (value?: unknown) => void) => void;
 }
 
+interface CreateAnimationReturn {
+    play: () => void;
+    reset: () => void;
+    replay: () => void;
+    getIsFinished: Accessor<boolean>;
+    getAnimateInstance: Accessor<AnimationControls | null>;
+}
+
 /**
- * `useMotionAnimate` returns `animateInstance`(Animation Controls) returned by `animate` and some helper functions and state
+ * `createAnimation` returns `animateInstance`(Animation Controls) returned by `animate` and some helper functions and state
  * for Example: `play`, `reset`, `replay` and `isFinished`
  * @param selector - The target element, can be string or a ref
  * @param keyframes - Element will animate from its current style to those defined in the keyframe. Refer to [motion's docs](https://motion.dev/dom/animate#keyframes) for more.
  * @param options - Optional parameter. Refer to [motion doc's](https://motion.dev/dom/animate#options) for the values you could pass to this.
  * @param events - Pass functions of whatever you want to happen when a event like `onFinish` happens.
  */
-export const useMotionAnimate = (
+export const createAnimation = (
     selector: ModifiedAcceptedElements,
     keyframes: MotionKeyframesDefinition,
     options?: AnimationOptionsWithOverrides,
-    events?: MotionAnimateEvents,
-) => {
+    events?: CreateAnimationEvents,
+): CreateAnimationReturn => {
     const [getAnimateInstance, setAnimateInstance] =
         createSignal<AnimationControls | null>(null);
     const [getIsFinished, setIsFinished] = createSignal(true);
@@ -75,10 +83,10 @@ export const useMotionAnimate = (
     };
 
     return {
-        animateInstance: getAnimateInstance(),
+        getAnimateInstance,
         play,
         reset,
         replay,
-        isFinished: getIsFinished(),
+        getIsFinished,
     };
 };

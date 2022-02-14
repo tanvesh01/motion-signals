@@ -1,6 +1,6 @@
 {
   "name": "motion-signals",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A wrapper over Motion One, An animation library, built on the Web Animations API for the smallest filesize and the fastest performance.",
   "author": "tanvesh01",
   "license": "MIT",

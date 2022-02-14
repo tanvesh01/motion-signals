@@ -1,6 +1,6 @@
 import { AcceptedElements, MotionKeyframesDefinition } from '@motionone/dom';
 import { AnimationControls } from '@motionone/types';
-import { createSignal } from 'solid-js';
+import { Accessor, createSignal } from 'solid-js';
 
 import { timeline } from 'motion';
 import { TimelineOptions } from '@motionone/dom/types/timeline';
@@ -10,32 +10,28 @@ import { AnimationListOptions } from '@motionone/dom/types/animate/types';
 
 // TODO: Place all these types/interfaces in another file
 
-interface UseAnimationTypes {
-    onFinish: (res: (value?: unknown) => void) => void;
-}
-
 type ModifiedAcceptedElements = AcceptedElements | (() => HTMLElement);
 
-type segment =
+export type TimelineItem =
     | [ModifiedAcceptedElements, MotionKeyframesDefinition]
     | [ModifiedAcceptedElements, MotionKeyframesDefinition, AnimationListOptions];
 
-export type SequenceDefination = segment[];
+export type SequenceDefination = TimelineItem[];
 
-interface UseAnimationTypes {
+export interface CreateTimelineEvents {
     onFinish: (res: (value?: unknown) => void) => void;
 }
 
-interface UseMotionTimelineReturn {
+interface CreateTimelineReturn {
     play: () => void;
     reset: () => void;
     replay: () => void;
-    isFinished: boolean;
-    timelineInstance: AnimationControls | null;
+    getIsFinished: Accessor<boolean>;
+    getTimelineInstance: Accessor<AnimationControls | null>;
 }
 
 /**
- * `useMotionTimeline` returns `timelineInstance` (Animation Controls) that are returned by `timeline` and some helper functions and state
+ * `createTimeline` returns `timelineInstance` (Animation Controls) that are returned by `timeline` and some helper functions and state
  * for Example: `play`, `reset`, `replay` and `isFinished`
  * @param sequence - `sequence` is an array, defines animations with the same settings as the animate function. In the arrays,  Element can be either a string or a ref.
  * @param options - Optional parameter. Refer to [motion doc's](https://motion.dev/dom/timeline#options) for the values you could pass into this.
@@ -54,14 +50,14 @@ const convertRefsFunctionsToElement = (
     return newArray as TimelineDefinition;
 };
 
-export const useMotionTimeline = (
+export const createTimeline = (
     sequence: SequenceDefination,
     options?: TimelineOptions,
-    events?: UseAnimationTypes,
-): UseMotionTimelineReturn => {
+    events?: CreateTimelineEvents,
+): CreateTimelineReturn => {
     const [getTimelineInstance, setTimelineInstance] =
         createSignal<AnimationControls | null>(null);
-    const [getIsFinished, setIsFinished] = createSignal(true);
+    const [getIsFinished, setIsFinished] = createSignal<boolean>(true);
 
     const play = async () => {
         const currentTimelineInstance = timeline(
@@ -99,10 +95,10 @@ export const useMotionTimeline = (
     };
 
     return {
-        timelineInstance: getTimelineInstance(),
+        getTimelineInstance,
         play,
         reset,
         replay,
-        isFinished: getIsFinished(),
+        getIsFinished,
     };
 };

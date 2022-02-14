@@ -14,28 +14,28 @@ npm install motion-signals motion
 
 As of now, motion-signals has 2 Functions that wrap around `animate` and `timeline` of motion one respectively
 
--   [`useMotionAnimate`](https://github.com/tanvesh01/motion-signals#usemotionanimate)
--   [`useMotionTimeline`](https://github.com/tanvesh01/motion-signals#usemotiontimeline)
+-   [`createAnimation`](https://github.com/tanvesh01/motion-signals#createAnimation)
+-   [`createTimeline`](https://github.com/tanvesh01/motion-signals#createTimeline)
 
 ## Example usage
 
-**Things You could do with [`useMotionAnimate`](https://github.com/tanvesh01/motion-signals#usemotionanimate)**
+**Things You could do with [`createAnimation`](https://github.com/tanvesh01/motion-signals#createanimation)**
 
 <!-- Animating List - [Link to codesandbox](https://codesandbox.io/s/divine-mountain-qelct?file=/src/App.js) -->
 
-![useMotionAnimate List Example](https://media1.giphy.com/media/JNMxjkEipIurs5RaQb/giphy.gif)
+![createAnimation List Example](https://media1.giphy.com/media/JNMxjkEipIurs5RaQb/giphy.gif)
 
 <!-- Animating Counter - [Link to codesandbox](https://codesandbox.io/s/nice-browser-d4ds3?file=/src/App.js) -->
 
-![useMotionAnimate Counter Example](https://media3.giphy.com/media/80wDwOyRlnS1woHcF0/giphy.gif)
+![createAnimation Counter Example](https://media3.giphy.com/media/80wDwOyRlnS1woHcF0/giphy.gif)
 
-**Things You could do with [`useMotionTimeline`](https://github.com/tanvesh01/motion-signals#usemotiontimeline)**
+**Things You could do with [`createTimeline`](https://github.com/tanvesh01/motion-signals#createtimeline)**
 
 <!-- Animating elements independently - [Link to codesandbox](https://codesandbox.io/s/dazzling-dawn-f48sm?file=/src/App.js) -->
 
-![useMotionTimeline Example Usage](https://media1.giphy.com/media/RxCRUxJgi4nuM7b7yv/giphy.gif)
+![createTimeline Example Usage](https://media1.giphy.com/media/RxCRUxJgi4nuM7b7yv/giphy.gif)
 
-### `useMotionAnimate`
+### `createAnimation`
 
 Returns all the properties returned by [`animate`](https://motion.dev/dom/animate) and some helper functions and state
 
@@ -45,7 +45,7 @@ Returns all the properties returned by [`animate`](https://motion.dev/dom/animat
 
 ```jsx
 function App() {
-    const { play, isFinished, replay } = useMotionAnimate(
+    const { play, getIsFinished, replay } = createAnimation(
         '.listItem',
         { y: -20, opacity: 1 },
         {
@@ -56,14 +56,14 @@ function App() {
     );
 
     // Play the animation on mount of the component
-    useEffect(() => {
+    onMount(() => {
         play();
-    }, []);
+    });
 
     return (
         // Replay the animation anytime by calling a function, anywhere
         <div class="App">
-            <button disabled={!isFinished} onClick={() => replay()}>
+            <button disabled={!getIsFinished()} onClick={() => replay()}>
                 Replay
             </button>
 
@@ -81,8 +81,8 @@ Instead of passing strings to select elements, you can also pass a `ref` :point_
 
 ```jsx
 let boxRef;
-const { play, isFinished, replay } = useMotionAnimate(
-    () => boxRef, // Pass Function that returns the ref
+const { play, getIsFinished, replay } = createAnimation(
+    () => boxRef, // Pass a Function that returns the ref
     { y: -20, scale: 1.2 },
     { duration: 1 },
 );
@@ -93,7 +93,7 @@ return <div ref={boxRef}>BOX</div>;
 **API**
 
 ```js
-const { play, replay, reset, isFinished, animateInstance } = useMotionAnimate(
+const { play, replay, reset, getIsFinished, getAnimateInstance } = createAnimation(
     selector,
     keyframes,
     options,
@@ -101,15 +101,15 @@ const { play, replay, reset, isFinished, animateInstance } = useMotionAnimate(
 );
 ```
 
-`useMotionAnimate` returns:
+`createAnimation` returns:
 
 -   `play`: plays the animation
 -   `replay`: Resets and plays the animation
 -   `reset`: resets the element to its original styling
--   `isFinished`: is `true` when animation has finished playing
--   `animateInstance`: Animation Controls. Refer to [motion one docs](https://motion.dev/dom/controls) for more.
+-   `getIsFinished`: is `true` when animation has finished playing
+-   `getAnimateInstance`: Animation Controls. Refer to [motion one docs](https://motion.dev/dom/controls) for more.
 
-`useMotionAnimate` accepts:
+`createAnimation` accepts:
 
 -   `selector` - The target element, can be string or a ref
 -   `keyframes` - Element will animate from its current style to those defined in the keyframe. Refer to [motion's docs](https://motion.dev/dom/animate#keyframes) for more.
@@ -119,7 +119,7 @@ const { play, replay, reset, isFinished, animateInstance } = useMotionAnimate(
     **`events` usage example**
 
     ```jsx
-    const { play, isFinished, replay } = useMotionAnimate(
+    const { play, getIsFinished, replay } = createAnimation(
         '.listItem',
         { y: -20, opacity: 1 },
         {
@@ -134,11 +134,11 @@ const { play, replay, reset, isFinished, animateInstance } = useMotionAnimate(
     );
     ```
 
-### `useMotionTimeline`
+### `createTimeline`
 
 Create complex sequences of animations across multiple elements.
 
-returns `timelineInstance` (Animation Controls) that are returned by [`timeline`](https://motion.dev/dom/timeline) and some helper functions and state
+returns `getTimelineInstance` (Animation Controls) that are returned by [`timeline`](https://motion.dev/dom/timeline) and some helper functions and state
 
 > Props returned by [`timeline`](https://motion.dev/dom/timeline) are `null` initially
 
@@ -147,7 +147,7 @@ returns `timelineInstance` (Animation Controls) that are returned by [`timeline`
 ```jsx
 function App() {
     let gifRef;
-    const { play, isFinished, replay } = useMotionTimeline(
+    const { play, getIsFinished, replay } = createTimeline(
         [
             // You can use Refs too!
             [() => gifRef, { scale: [0, 1.2], opacity: 1 }],
@@ -157,13 +157,13 @@ function App() {
         { duration: 2 },
     );
 
-    useEffect(() => {
+    onMount(() => {
         play();
-    }, []);
+    });
 
     return (
         <div class="App">
-            <button disabled={!isFinished} onClick={() => replay()}>
+            <button disabled={!getIsFinished()} onClick={() => replay()}>
                 Replay
             </button>
 
@@ -182,26 +182,26 @@ function App() {
 **API**
 
 ```js
-const { play, replay, reset, isFinished, timelineInstance } = useMotionTimeline(
+const { play, replay, reset, getIsFinished, getTimelineInstance } = createTimeline(
     sequence,
     options,
     events,
 );
 ```
 
-`useMotionTimeline` returns:
+`createTimeline` returns:
 
 -   `play`: plays the animation
 -   `replay`: Resets and plays the animation
 -   `reset`: resets the element to its original styling
--   `isFinished`: is `true` when animation has finished playing
--   `timelineInstance`: Animation Controls. Refer to [motion one docs](https://motion.dev/dom/controls) for more.
+-   `getIsFinished`: is `true` when animation has finished playing
+-   `getTimelineInstance`: Animation Controls. Refer to [motion one docs](https://motion.dev/dom/controls) for more.
 
-`useMotionTimeline` accepts:
+`createTimeline` accepts:
 
 -   `sequence` - `sequence` is an array, defines animations with the same settings as the animate function. In the arrays, Element can be either a string or a ref. You can refer to [sequence docs](https://motion.dev/dom/timeline#sequence) for more on this.
 -   `options` - Optional parameter. Refer to [motion doc's](https://motion.dev/dom/animate#options) for the values you could pass to this.
--   `events` - Pass functions of whatever you want to happen when a event like `onFinish` happens. Exactly same as useMotionAnimate's `onFinish`.
+-   `events` - Pass functions of whatever you want to happen when a event like `onFinish` happens. Exactly same as createAnimation's `onFinish`.
 
 ---
 
