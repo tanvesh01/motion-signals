@@ -46,3 +46,4 @@ typings/
 
 # generate output
 dist
+.vscode
