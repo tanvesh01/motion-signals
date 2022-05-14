@@ -4,7 +4,7 @@ import { stagger } from 'motion';
 
 import "./AnimatingList.css"
 
-function AnimatingList() {
+export default function AnimatingList() {
 	const { getIsFinished, play, replay } = createAnimation(
 		'.listItem',
 		{ y: -20, opacity: 1 },
@@ -33,7 +33,5 @@ function AnimatingList() {
 				<li class="listItem">Item 3</li>
 			</ul>
 		</div>
-	)
+	);
 }
-
-export default AnimatingList

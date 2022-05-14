@@ -1,5 +1,6 @@
 import { onMount } from 'solid-js';
 import { createTimeline } from 'motion-signals'
+
 import './AnimatingElements.css';
 import Image from './mind-blown-explosion.gif';
 

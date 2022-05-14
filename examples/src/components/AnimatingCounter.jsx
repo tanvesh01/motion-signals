@@ -1,11 +1,12 @@
 import { createSignal } from "solid-js";
-// import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/solid';
 import { createAnimation } from 'motion-signals'
+// import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/solid';
+
 import './AnimatingCounter.css';
 
-const ICON_STYLES = { color: 'white', width: '1.4rem', height: 'auto' };
+const ICON_STYLES = { color: 'white', width: '', height: 'auto' };
 
-function AnimatedCounter() {
+export default function AnimatedCounter() {
 	let refCounterOutput
 	const { play } = createAnimation(
 		()=>refCounterOutput,
@@ -53,5 +54,3 @@ function AnimatedCounter() {
 		</div>
 	);
 }
-
-export default AnimatedCounter;
