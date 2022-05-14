@@ -1,5 +1,5 @@
 import AnimatingCounter from "./components/AnimatingCounter";
-// import AnimatingElements from "./components/AnimatingElements";
+import AnimatingElements from "./components/AnimatingElements";
 import AnimatingList from "./components/AnimatingList";
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
 	return (
 		<div class="App">
 			<AnimatingCounter />
-			{/* <AnimatingElements /> */}
+			<AnimatingElements />
 			<AnimatingList />
 		</div>
 	);

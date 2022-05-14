@@ -22,7 +22,7 @@ function AnimatingList() {
 
 	return (
 	// Replay the animation anytime by calling a function, anywhere
-		<div class="listContainer">
+		<div class="ListContainer">
 			<button disabled={!getIsFinished()} onClick={() => replay()}>
 				Replay
 			</button>

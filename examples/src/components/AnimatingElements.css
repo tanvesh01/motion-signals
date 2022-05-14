@@ -1,40 +1,44 @@
-.App {
+.ElementsContainer {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f0f0f0;
+  background-color: #838383;
   height: 100vh;
   font-family: "Inter";
 }
 
-.gif {
-  width: auto;
-  border-radius: 1rem;
-}
-.container {
+.ElementsContainer .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
+  padding: 2em;
   align-items: center;
+  border-radius: 1em;
+  background-color: #f2f2f2;
 }
 
-.heading {
+.ElementsContainer .gif {
+  width: auto;
+  border-radius: 1rem;
+}
+
+.ElementsContainer .heading {
   color: rgb(31, 31, 31);
   opacity: 0;
   font-weight: 700;
   margin: 0;
 }
 
-.App p {
+.ElementsContainer p {
   margin: 0;
   padding: 0;
   opacity: 0;
   color: grey;
 }
 
-.App button {
+.ElementsContainer button {
   border: 1px solid #e4e4e4;
   padding: 5px 15px;
   border-radius: 6px;
@@ -43,10 +47,10 @@
   transition: 0.3s all;
 }
 
-.App button:disabled {
+.ElementsContainer button:disabled {
   cursor: not-allowed;
 }
 
-.App button {
+.ElementsContainer button {
   margin-bottom: 3rem;
 }

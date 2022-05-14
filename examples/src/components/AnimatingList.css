@@ -1,4 +1,4 @@
-.listContainer {
+.ListContainer {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -8,7 +8,7 @@
 	height: 100vh;
 }
 
-.listContainer button {
+.ListContainer button {
 	border: 1px solid #e4e4e4;
 	padding: 5px 15px;
 	border-radius: 6px;
@@ -17,7 +17,7 @@
 	transition: 0.3s all;
 }
 
-.listContainer button:disabled {
+.ListContainer button:disabled {
 	cursor: not-allowed;
 }
 

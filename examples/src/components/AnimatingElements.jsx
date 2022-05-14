@@ -21,7 +21,7 @@ export default function AnimatingElements() {
 });
 
 	return (
-		<div class="App">
+		<div class="ElementsContainer">
 			<button disabled={!getIsFinished} onClick={() => replay()}>
 				Replay
 			</button>
