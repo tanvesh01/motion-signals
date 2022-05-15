@@ -22,16 +22,16 @@ export default function AnimatingList() {
 
 	return (
 	// Replay the animation anytime by calling a function, anywhere
-		<div class="ListContainer">
+		<section class="ListContainer">
 			<button disabled={!getIsFinished()} onClick={() => replay()}>
 				Replay
 			</button>
 
 			<ul class="list">
-				<li class="listItem">Item 1</li>
-				<li class="listItem">Item 2</li>
-				<li class="listItem">Item 3</li>
+				<li class="listItem">1</li>
+				<li class="listItem">2</li>
+				<li class="listItem">3</li>
 			</ul>
-		</div>
+		</section>
 	);
 }

@@ -22,7 +22,7 @@ export default function AnimatingElements() {
 });
 
 	return (
-		<div class="ElementsContainer">
+		<section class="ElementsContainer">
 			<button disabled={!getIsFinished} onClick={() => replay()}>
 				Replay
 			</button>
@@ -37,11 +37,11 @@ export default function AnimatingElements() {
 				<div>
 					<h3 class="heading">Tanvesh</h3>
 					<p><a href="https://twitter.com/Sarve___tanvesh">@sarve__tanvesh</a></p>
-				<hr />
+					<hr />
 					<h3 class="heading">tom byrer</h3>
 					<p><a href="https://twitter.com/tombyrer">@tombyrer</a></p>
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 }

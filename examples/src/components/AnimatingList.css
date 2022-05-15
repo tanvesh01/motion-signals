@@ -1,11 +1,11 @@
 .ListContainer {
-	width: 100%;
+  /* width: 50%; */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	background-color: #f2f2f2;
-	height: 100vh;
+  height: 50vh;
 }
 
 .ListContainer button {
@@ -31,8 +31,9 @@
 	margin: 1rem 0;
 	padding: 14px 15px;
 	border-radius: 0.3rem;
-	font-weight: 500;
-	background-color: hsl(82,28%,84%);
+	font-size: 1.62rem;
+	font-weight: 700;
+  background-color: hsl(0, 40%, 74%);
 	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
