@@ -4,10 +4,14 @@
   flex-wrap: wrap;
 }
 
+a {
+  color: #08583d;
+}
+
 .card {
   box-sizing: border-box;
   min-height: 50vh;
-  background-color: hsl(0, 40%, 74%);
+  background-color: #18faae;
   flex: 1;
   min-width: 50%;
   border: 5px solid white;
@@ -24,9 +28,20 @@ section#about {
   height: 50vh;
 }
 
-
 section#about > div {
 	margin: 1.62em;
 	padding: 1.62em;
 	background-color: #f2f2f2;
+}
+
+@media (max-width: 500px) {
+  .card {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 800px) {
+  section#about {
+    font-size: 1.16em;
+  }
 }

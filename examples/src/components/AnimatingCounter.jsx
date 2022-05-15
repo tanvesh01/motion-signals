@@ -4,11 +4,10 @@ import { createAnimation } from 'motion-signals'
 
 import './AnimatingCounter.css';
 
-const ICON_STYLES = { color: 'white', width: '', height: 'auto' };
-
 export default function AnimatedCounter() {
 	let refCounterOutput
 	const { play } = createAnimation(
+		// ref on the element inserts animation directly into 'style' attribute
 		()=>refCounterOutput,
 		{ y: [5, 20, -10, 0], opacity: [1, 0, 0, 1] },
 		{ duration: 0.5 },

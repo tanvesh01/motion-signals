@@ -6,12 +6,12 @@
   align-items: center;
   background-color: #252525;
   height: 50vh;
-  font-size: 2rem;
+  font-size: 2.2rem;
 }
 
 .CounterContainer p {
   margin: 0;
-  padding: 0;
+  padding: 0 0 0.3rem 0;
   color: #18faae;
   font-family: "Inter";
 }
@@ -26,7 +26,7 @@
 }
 
 .CounterContainer .container {
-  padding: 0.5rem;
+  padding: 0.73rem 0.5rem 0.35rem 0.5rem;
   border-radius: 2.2rem;
   border: 2px solid white;
   text-align: center;
