@@ -1,14 +1,23 @@
 {
   "name": "motionone-solidjs-examples",
   "version": "0.0.3",
-  "description": "",
+  "description": "tanvesh01/motion-signals (Motion One wrapper for SolidJS) demo in Solid-Start",
+  "license": "MIT",
+  "contributors": [
+    "Tanvesh Sarve (https://github.com/tanvesh01)",
+    "Tom Byrer (https://github.com/tomByrer)"
+  ],
+  "keywords": [
+    "SolidJS",
+    "animation",
+    "motionone"
+  ],
   "scripts": {
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
   },
-  "license": "MIT",
   "devDependencies": {
     "vite": "^2.9.9",
     "vite-plugin-solid": "^2.2.6"
@@ -16,6 +25,6 @@
   "dependencies": {
     "motion": "^10.8.1",
     "motion-signals": "^0.0.3",
-    "solid-js": "^1.4.0"
+    "solid-js": "^1.4.1"
   }
 }
