@@ -4,6 +4,8 @@ A wrapper over [Motion One](https://motion.dev/), An animation library, built on
 
 [![npm version](https://badge.fury.io/js/motion-signals.svg)](https://www.npmjs.com/package/motion-signals) ![npm](https://img.shields.io/npm/dt/motion-signals) [![Twitter Follow](https://img.shields.io/twitter/follow/Sarve___tanvesh?label=Chat)](https://twitter.com/Sarve___tanvesh)
 
+[Demo examples at netify](https://motion-signals.netlify.app/)
+
 ## Installation
 
 ```
